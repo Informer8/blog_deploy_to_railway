@@ -1,0 +1,80 @@
+﻿{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+		<!-- google fonts -->
+		<link href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i&display=swap" rel="stylesheet">
+		<link rel="shortcut icon" type="image/x-icon" href="{% static 'assets\images\profile.jpg' %}" style="border-radius: 50%;">
+
+		<link rel="stylesheet" href="{% static 'assets\css\animate.css' %}">
+		<link rel="stylesheet" href="{% static 'assets\css\bootstrap.min.css' %}">
+		<link rel="stylesheet" href="{% static 'assets\css\icofont.min.css' %}">
+		<link rel="stylesheet" href="{% static 'assets\css\lightcase.css' %}">
+		<link rel="stylesheet" href="{% static 'assets\css\swiper.min.css' %}">
+		<link rel="stylesheet" href="{% static 'assets\css\style.css' %}">
+		
+		<title>CRaman</title>
+	</head>
+
+	<body class="home-5-6">
+		{% include 'navbar.html' %}
+        
+        <!-- 404 Section Start Here -->
+        <div class="fore-zero-page">
+            <div class="container">
+                <div class="images">
+                    <img src="{% static 'assets\images\404.png' %}" alt="404">
+                </div>
+                <div class="text-content text-center">
+                    <h3>Oops! This Page Not Found</h3>
+                    <p>We are Really Sorry But the Page you Requested is Missing :(</p>
+                    <a href="index.html" class="lab-btn"><span>Go Back to Home</span></a>
+                </div>
+            </div>
+        </div>
+        <!-- 404 Section Ending Here -->
+
+        <!-- Footer Section Start Here -->
+        <footer class="bg_img mt-4" style="background-image: url({% static 'assets/css/bg-image/bg-3.jpg' %});">
+            <div class="footer-bottom">
+                <div class="container">
+                    <div class="section-wrapper">
+                        <div class="row content align-items-center justify-content-center">
+                            <p><a href="https://www.facebook.com/profile.php?id=100009364420887" target="_blank"><i class="icofont-facebook"></i>Facebook</a></p>
+                            <p><a href="#" target="_blank"><i class="icofont-twitter"></i>Twitter</a></p>
+                            <p><a href="#" target="_blank"><i class="icofont-instagram"></i>Instagram</a></p>
+                            <p><a href="https://www.youtube.com/channel/UCn01Zd6QK7zN2ivx_KpJqXg" target="_blank"><i class="icofont-youtube"></i>YouTube</a></p>
+                            <p><a href="https://github.com/Informer8?tab=repositories" target="_blank"><i class="icofont-github"></i>Github</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="container">
+                    <div class="section-wrapper">
+                        <p>&copy; 2022 All Rights Reserved.</p>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!-- Footer Section Ending Here -->
+
+        <!-- scrollToTop start here -->
+        <a href="#" class="scrollToTop"><i class="icofont-swoosh-up"></i><span class="pluse_1"></span><span class="pluse_2"></span></a>
+        <!-- scrollToTop ending here -->
+        
+        <script src="{% static 'assets\js\jquery.js' %}"></script>
+        <script src="{% static 'assets\js\waypoints.min.js' %}"></script>
+        <script src="{% static 'assets\js\bootstrap.min.js' %}"></script>
+        <script src="{% static 'assets\js\lightcase.js' %}"></script>
+        <script src="{% static 'assets\js\isotope.pkgd.min.js' %}"></script>
+        <script src="{% static 'assets\js\swiper.min.js' %}"></script>
+        <script src="{% static 'assets\js\jquery.countdown.min.js' %}"></script>
+        <script src="{% static 'assets\js\wow.min.js' %}"></script>
+        <script src="{% static 'assets\js\functions.js' %}"></script>
+            
+	</body>
+</html>

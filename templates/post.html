@@ -1,0 +1,251 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+		<!-- google fonts -->
+		<link href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i&display=swap" rel="stylesheet">
+        <link rel="shortcut icon" type="image/x-icon" href="{% static 'assets\images\profile.jpg' %}" style="border-radius: 50%;">
+
+		<link rel="stylesheet" href="{% static 'assets\css\animate.css' %}">
+		<link rel="stylesheet" href="{% static 'assets\css\bootstrap.min.css' %}">
+		<link rel="stylesheet" href="{% static 'assets\css\icofont.min.css' %}">
+		<link rel="stylesheet" href="{% static 'assets\css\lightcase.css' %}">
+		<link rel="stylesheet" href="{% static 'assets\css\swiper.min.css' %}">
+		<link rel="stylesheet" href="{% static 'assets\css\style.css' %}">
+		
+		<title>CRaman</title>
+	</head>
+
+	<body class="home-5-6">
+        {% include 'navbar.html' %}
+
+        <!-- Blog Section Start Here -->
+		<!-- <section class="blog-section home-2 padding-tb" style="background-image: url({% static 'assets/css/bg-image/footer-bg-4.jpg' %});"> -->
+            <div class="container">
+                {% for post in qs %}
+                <!-- Blog Section Start Here -->
+                <div class="blog-section blog-single padding-tb">
+                    <div class="container">
+                        <div class="row justify-content-center">
+                            <div class="col-lg-8 col-12">
+                                <article>
+                                    <div class="section-wrapper">
+                                            <div class="post-item">
+                                                <div class="post-item-inner">
+                                                    <div class="post-thumb">
+                                                        <img src="{{ post.image.url }}" alt="blog">
+                                                    </div>
+                                                    <div class="post-content">
+                                                        <h3>{{ post.title }}</h3>
+                                                        <div class="author-date">
+                                                            <a class="date"><i class="icofont-calendar"></i>{{ post.dateTime }}</a>
+                                                            <a class="admin"><i class="icofont-ui-user"></i>{{ post.author }}</a>
+                                                            <a class="comment"><i class="icofont-speech-comments"></i>{{ post.comments.all.count }} Comments</a>
+                                                        </div>
+
+                                                        <p>{{ post.content|safe }}</p>
+                                                        
+                                                        <!-- For Quote -->
+                                                        <!-- <blockquote>
+                                                            <p>Steal into The nering Sanc How Mysef Down Amon The Hal Gras Buz Lttle World Amon The Stak And Grow Fama With Couns And Fesingri Steal intoing Thene Sanc Hrow Myse Down Amon The Hall Gras Biss The Almighty Among The Staks </p>
+                                                            <cite><a href="#">...Melissa Hunter</a></cite>
+                                                        </blockquote> -->
+                                                        <!-- For Image -->
+                                                        <!-- <img src="assets\images\blog\single\02.jpg" alt="blog-single"> -->
+                                                        <!-- For Video -->
+                                                        <!-- <div class="video-thumb">
+                                                            <img src="assets\images\blog\single\03.jpg" alt="video">
+                                                            <a href="https://www.youtube.com/embed/7aSIHK_xaHM" data-rel="lightcase" class="video-icon"><i class="icofont-youtube-play"></i></a>
+                                                        </div> -->
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        <div class="navigations-part">
+                                            <div class="left">
+                                                <a href="{{ STATIC_URL }}/{{ prevpost.slug }}/" class="prev"><i class="icofont-double-left"></i>Previous Article</a>
+                                                {% if prevpost %}
+                                                <a href="{{ STATIC_URL }}/{{ prevpost.slug }}/" class="title">{{ prevpost }}</a>
+                                                {% endif %}
+                                            </div>
+                                            <div class="right">
+                                                <a href="{{ STATIC_URL }}/{{ nextpost.slug }}/" class="prev">Next Article<i class="icofont-double-right"></i></a>
+                                                {% if nextpost %}
+                                                <a href="{{ STATIC_URL }}/{{ nextpost.slug }}/" class="title">{{ nextpost }}</a>
+                                                {% endif %}
+                                            </div>
+                                        </div>
+
+                                        <div class="authors">
+                                            <div class="author-thumb">
+                                                <a style="border-radius: 40%;"><img src="{% static 'assets\images\profile.jpg' %}" alt="author"></a>
+                                            </div>
+                                            <div class="author-content">
+                                                <h6>Chhabi Raman Adhikari</h6>
+                                                <p>Technology Enthusiast.Learner!</p>
+                                                <div class="scocial-media">
+                                                    <a href="https://www.facebook.com/profile.php?id=100009364420887" class="facebook" target="_blank"><i class="icofont-facebook"></i></a>
+                                                    <a href="#" class="twitter" target="_blank"><i class="icofont-twitter"></i></a>
+                                                    <a href="https://www.youtube.com/channel/UCn01Zd6QK7zN2ivx_KpJqXg" class="facebook" target="_blank"><i class="icofont-youtube-play"></i></a>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        {% if not post.comments.all %}
+                                            <h4 class="title-border">No Comments</h4>
+                                        {% else %}
+                                            <div id="comments" class="comments">
+                                                <h4 class="title-border">{{ post.comments.all.count }} Comments</h4>
+                                                {% for comment in post.comments.all %}
+                                                    <ul class="comment-list lab-ul">
+                                                        <li class="comment">
+                                                            <div class="com-content">
+                                                                <div class="com-title">
+                                                                    <div class="com-title-meta">
+                                                                        <h6><a href="#" class="url">{{ comment.name }}</a></h6>
+                                                                        <span> {{ comment.date_added }} </span>
+                                                                    </div>
+                                                                    <!-- <span class="reply">
+                                                                        <a class="comment-reply-link" href="#"><i class="icofont-reply-all"></i>Reply</a>
+                                                                    </span> -->
+                                                                </div>
+                                                                <p>{{ comment.body }}</p>
+                                                            </div>
+                                                        </li>
+                                                    </ul>
+                                                {% endfor %}
+                                            </div>
+                                        {% endif %}
+
+                                        <div id="respond" class="comment-respond">
+                                            <h4 class="title-border">Leave a Comment</h4>
+                                            <div class="add-comment">
+                                                <form method="POST" id="commentform" class="comment-form">{% csrf_token %}
+                                                    {{ comment_form }}
+                                                    <button type="submit" class="lab-btn"><span>send comment</span></button>
+                                                </form>
+                                            </div>          
+                                        </div>
+                                    </div>
+                                </article>
+                            </div>
+                            
+                            <div class="col-lg-4 col-md-7 col-12">
+                                <aside>
+                                    <div class="widget widget-search">
+                                        <form action="/" class="search-wrapper">
+                                            <input type="text" name="s" placeholder="Search...">
+                                            <button type="submit"><i class="icofont-search-2"></i></button>
+                                        </form>
+                                    </div>
+
+                                    <div class="widget widget-category">
+                                        <div class="widget-header">
+                                            <h5>Post Categories</h5>
+                                        </div>
+                                        <ul class="widget-wrapper lab-ul">
+                                            {% for category in categories %}
+                                                <li>
+                                                    <a href="{% url 'category' category.slug %}" class="d-flex flex-wrap justify-content-between"><span><i class="icofont-double-right"></i>{{ category }}</span><span>{{ category.posts_count }}</span></a>
+                                                </li>
+                                            {% endfor %}
+                                        </ul>
+                                    </div>
+                
+                                    <!-- <div class="widget widget-post">
+                                        <div class="widget-header">
+                                            <h5>Recent Posts</h5>
+                                        </div>
+                                        <ul class="widget-wrapper lab-ul">
+                                            <li class="d-flex flex-wrap justify-content-between">
+                                                <div class="post-thumb">
+                                                    <a href="#"><img src="assets\images\blog\01.jpg" alt="product"></a>
+                                                </div>
+                                                <div class="post-content">
+                                                    <a href="#"><h6>Remo Supo Car Who Foring Emop Dutoring Power</h6></a>
+                                                    <p>04 February 2020</p>
+                                                </div>
+                                            </li>
+                                            <li class="d-flex flex-wrap justify-content-between">
+                                                <div class="post-thumb">
+                                                    <a href="#"><img src="assets\images\blog\02.jpg" alt="product"></a>
+                                                </div>
+                                                <div class="post-content">
+                                                    <a href="#"><h6>Remo Supo Car Who Foring Emop Dutoring Power</h6></a>
+                                                    <p>04 February 2020</p>
+                                                </div>
+                                            </li>
+                                            <li class="d-flex flex-wrap justify-content-between">
+                                                <div class="post-thumb">
+                                                    <a href="#"><img src="assets\images\blog\03.jpg" alt="product"></a>
+                                                </div>
+                                                <div class="post-content">
+                                                    <a href="#"><h6>Remo Supo Car Who Foring Emop Dutoring Power</h6></a>
+                                                    <p>04 February 2020</p>
+                                                </div>
+                                            </li>
+                                            <li class="d-flex flex-wrap justify-content-between">
+                                                <div class="post-thumb">
+                                                    <a href="#"><img src="assets\images\blog\04.jpg" alt="product"></a>
+                                                </div>
+                                                <div class="post-content">
+                                                    <a href="#"><h6>Remo Supo Car Who Foring Emop Dutoring Power</h6></a>
+                                                    <p>04 February 2020</p>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div> -->
+                                </aside>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+            </div>
+            <!-- Blog Section Ending Here -->
+
+        <!-- Footer Section Start Here -->
+        <footer class="bg_img mt-4" style="background-image: url({% static 'assets/css/bg-image/bg-3.jpg' %});">
+            <div class="footer-bottom">
+                <div class="container">
+                    <div class="section-wrapper">
+                        <div class="row content align-items-center justify-content-center">
+                            <p><a href="https://www.facebook.com/profile.php?id=100009364420887" target="_blank"><i class="icofont-facebook"></i>Facebook</a></p>
+                            <p><a href="#" target="_blank"><i class="icofont-twitter"></i>Twitter</a></p>
+                            <p><a href="#" target="_blank"><i class="icofont-instagram"></i>Instagram</a></p>
+                            <p><a href="https://www.youtube.com/channel/UCn01Zd6QK7zN2ivx_KpJqXg" target="_blank"><i class="icofont-youtube"></i>YouTube</a></p>
+                            <p><a href="https://github.com/Informer8?tab=repositories" target="_blank"><i class="icofont-github"></i>Github</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="container">
+                    <div class="section-wrapper">
+                        <p>&copy; 2022 All Rights Reserved.</p>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!-- Footer Section Ending Here -->
+
+        <!-- scrollToTop start here -->
+        <a href="#" class="scrollToTop"><i class="icofont-swoosh-up"></i><span class="pluse_1"></span><span class="pluse_2"></span></a>
+        <!-- scrollToTop ending here -->
+
+        
+        <script src="{% static 'assets\js\jquery.js' %}"></script>
+        <script src="{% static 'assets\js\waypoints.min.js' %}"></script>
+        <script src="{% static 'assets\js\bootstrap.min.js' %}"></script>
+        <script src="{% static 'assets\js\lightcase.js' %}"></script>
+        <script src="{% static 'assets\js\isotope.pkgd.min.js' %}"></script>
+        <script src="{% static 'assets\js\swiper.min.js' %}"></script>
+        <script src="{% static 'assets\js\jquery.countdown.min.js' %}"></script>
+        <script src="{% static 'assets\js\wow.min.js' %}"></script>
+        <script src="{% static 'assets\js\functions.js' %}"></script>
+            
+	</body>
+</html>

@@ -1,0 +1,99 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <!-- google fonts -->
+        <link href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i&display=swap" rel="stylesheet">
+
+        <link rel="stylesheet" href="{% static 'assets\css\animate.css' %}">
+        <link rel="stylesheet" href="{% static 'assets\css\bootstrap.min.css' %}">
+        <link rel="stylesheet" href="{% static 'assets\css\icofont.min.css' %}">
+        <link rel="stylesheet" href="{% static 'assets\css\lightcase.css' %}">
+        <link rel="stylesheet" href="{% static 'assets\css\swiper.min.css' %}">
+        <link rel="stylesheet" href="{% static 'assets\css\style.css' %}">
+		
+		<title>{{ tags }}</title>
+	</head>
+
+	<body>
+        {% include 'navbar.html' %}
+        {% if category_posts %}
+            <!-- Blog Section Start Here -->
+    		<section class="blog-section padding-tb">
+                <div class="container">
+                    <div class="section-wrapper">
+                        <div class="row justify-content-center">
+                            {% for post in category_posts %}
+                            <div class="col-lg-4 col-sm-6 col-12">
+                                <div class="post-item">
+                                    <div class="post-item-inner">
+                                        <div class="post-thumb">
+                                            <a href="{% url 'detail' post.slug %}"><img src="/image/{{ post.image }}" alt="lab-blog" style="object-fit:fill;width:370px;height:300px;border: solid 1px #CCC"/></a>
+                                        </div>
+                                        <div class="post-content">
+                                            <h5><a href="{% url 'detail' post.slug %}">{{ post.title }}</a></h5>
+                                            <div class="author-date">
+                                                <a class="date"><i class="icofont-calendar"></i>{{ post.dateTime }}</a>
+                                                <a class="admin"><i class="icofont-ui-user"></i>{{ post.author }}</a>
+                                            </div>
+                                            <p>{{ post.title }}</p>
+                                            <div class="post-footer">
+                                                <a href="{% url 'detail' post.slug %}" class="text-btn">Read More<i class="icofont-double-right"></i></a>
+                                                <a href="{% url 'detail' post.slug %}" class="comments"><i class="icofont-comment"></i><span>{{ post.comments.all.count }}</span></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- Blog Section Ending Here -->
+        {% else %}
+            <h2>Sorry,This page does not exist..</h2>
+        {% endif %}
+		
+        <!-- Footer Section Start Here -->
+        <footer class="bg_img mt-4" style="background-image: url({% static 'assets/css/bg-image/bg-3.jpg' %});">
+            <div class="footer-bottom">
+                <div class="container">
+                    <div class="section-wrapper">
+                        <div class="row content align-items-center justify-content-center">
+                            <p><a href="https://www.facebook.com/profile.php?id=100009364420887" target="_blank"><i class="icofont-facebook"></i>Facebook</a></p>
+                            <p><a href="#" target="_blank"><i class="icofont-twitter"></i>Twitter</a></p>
+                            <p><a href="#" target="_blank"><i class="icofont-instagram"></i>Instagram</a></p>
+                            <p><a href="https://www.youtube.com/channel/UCn01Zd6QK7zN2ivx_KpJqXg" target="_blank"><i class="icofont-youtube"></i>YouTube</a></p>
+                            <p><a href="https://github.com/Informer8?tab=repositories" target="_blank"><i class="icofont-github"></i>Github</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="container">
+                    <div class="section-wrapper">
+                        <p>&copy; 2022 All Rights Reserved.</p>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!-- Footer Section Ending Here -->
+
+        <!-- scrollToTop start here -->
+        <a href="#" class="scrollToTop"><i class="icofont-swoosh-up"></i><span class="pluse_1"></span><span class="pluse_2"></span></a>
+        <!-- scrollToTop ending here -->        
+        <script src="{% static 'assets\js\jquery.js' %}"></script>
+        <script src="{% static 'assets\js\waypoints.min.js' %}"></script>
+        <script src="{% static 'assets\js\bootstrap.min.js' %}"></script>
+        <script src="{% static 'assets\js\lightcase.js' %}"></script>
+        <script src="{% static 'assets\js\isotope.pkgd.min.js' %}"></script>
+        <script src="{% static 'assets\js\swiper.min.js' %}"></script>
+        <script src="{% static 'assets\js\jquery.countdown.min.js' %}"></script>
+        <script src="{% static 'assets\js\wow.min.js' %}"></script>
+
+	</body>
+</html>
