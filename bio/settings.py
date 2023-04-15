@@ -23,13 +23,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-r91@$vr&rxue(l=9-ywf#2gcv#_82=cetyflznf%j1burr9dyl'
 
-CSRF_TRUSTED_ORIGINS = ['https://web-production-67fa.up.railway.app']
+CSRF_TRUSTED_ORIGINS = ['https://blogdeploytorailway-production.up.railway.app/']
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['craman.com.np', 'web-production-67fa.up.railway.app']
-# CSRF_TRUSTED_ORIGINS=['https://*.craman.com.np', 'https://web-production-67fa.up.railway.app']
+ALLOWED_HOSTS = ['craman.com.np', 'blogdeploytorailway-production.up.railway.app']
 
 # Application definition
 
@@ -95,12 +94,6 @@ DATABASES = {
         'PORT': '5432'
     }
 }
-
-# DATABASES['default'] = dj_database_url.config(
-#     default='postgres://Informer8:v2_433nD_dStNLa8aN3Wnsd4jw8nL9w2@db.bit.io:5432/Informer8/bio_posts',
-#     conn_max_age=600,
-#     conn_health_checks=True,
-# )
 
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
