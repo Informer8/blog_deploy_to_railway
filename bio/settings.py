@@ -23,12 +23,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-r91@$vr&rxue(l=9-ywf#2gcv#_82=cetyflznf%j1burr9dyl'
 
-CSRF_TRUSTED_ORIGINS = ['https://blogdeploytorailway-production.up.railway.app/']
+CSRF_TRUSTED_ORIGINS = ['https://blogdeploytorailway-production.up.railway.app/', 'https://cradhikari.com.np/']
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['craman.com.np', 'blogdeploytorailway-production.up.railway.app']
+ALLOWED_HOSTS = ['cradhikari.com.np', 'blogdeploytorailway-production.up.railway.app']
 
 # Application definition
 
